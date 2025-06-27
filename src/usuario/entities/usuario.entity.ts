@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { Funcionario } from '../../funcionario/entities/funcionario.entity';
 
 @Entity({ name: 'tb_usuarios' })
@@ -13,6 +13,7 @@ export class Usuario {
 
   @IsNotEmpty()
   @Column({ length: 150, nullable: false })
+  @Index({unique: true}) 
   email: string;
 
   @Column({ length: 5000, nullable: true })

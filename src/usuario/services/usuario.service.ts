@@ -70,7 +70,11 @@ export class UsuarioService {
   }
 
   async create(usuario: Usuario): Promise<Usuario> {
-    // this.validarFoto(usuario.foto);
+    this.validarFoto(usuario.foto);
+
+    if (this.findByEmail !== null)
+      throw new HttpException('Usuario já existe!', HttpStatus.BAD_REQUEST);
+    
 
     // const buscaEmail = await this.findByEmail(usuario.email);
     // if (buscaEmail)
@@ -87,6 +91,7 @@ export class UsuarioService {
     //     'Usuario (e-mail) ja cadastrado!',
     //     HttpStatus.BAD_REQUEST,
     //   );
+    
     return await this.usuarioRepository.save(usuario);
   }
 

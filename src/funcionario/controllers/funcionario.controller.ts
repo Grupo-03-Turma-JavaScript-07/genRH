@@ -48,6 +48,12 @@ export class FuncionarioController {
     return this.funcionarioService.update(funcionario);
   }
 
+  // @Put('/:id')
+  // @HttpCode(HttpStatus.OK)
+  // aumentoSalario(@Param('id', ParseIntPipe) id: number): Promise<Funcionario> {
+  //   return this.funcionarioService.aumentoSalario(funcionario);
+  // }
+
   @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   delete(@Param('id', ParseIntPipe) id: number) {
