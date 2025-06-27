@@ -59,30 +59,30 @@ export class FuncionarioService {
     return await this.funcionarioRepository.save(funcionario);
   }
 
-  async aumentoSalario (id: number): Promise<Funcionario> {
-    const funcionario = await this.findById(id);
-    let adicional
-    switch (funcionario.contrato) {
-      case 1:
-        adicional = 0.15;
-        break;
-      case 2:
-        adicional = 0.2;
-        break;
-      case 3:
-        adicional = 0;
-        break;
-      case 4:
-        adicional = 0.08;
-        break;
-    }
+  // async aumentoSalario (id: number): Promise<Funcionario> {
+  //   const funcionario = await this.findById(id);
+  //   let adicional
+  //   switch (funcionario.contrato) {
+  //     case 1:
+  //       adicional = 0.15;
+  //       break;
+  //     case 2:
+  //       adicional = 0.2;
+  //       break;
+  //     case 3:
+  //       adicional = 0;
+  //       break;
+  //     case 4:
+  //       adicional = 0.08;
+  //       break;
+  //   }
     
-    let aumentoSalario = (funcionario.salario * adicional);
-    let novoSalario = (funcionario.salario + aumentoSalario);
-    funcionario.salario = novoSalario
+  //   let aumentoSalario = (funcionario.salario * adicional);
+  //   let novoSalario = (funcionario.salario + aumentoSalario);
+  //   funcionario.salario = novoSalario
     
-    return await this.funcionarioRepository.save(funcionario);
-  }
+  //   return await this.funcionarioRepository.save(funcionario);
+  // }
 
   async delete(id: number): Promise<DeleteResult> {
     await this.findById(id);
