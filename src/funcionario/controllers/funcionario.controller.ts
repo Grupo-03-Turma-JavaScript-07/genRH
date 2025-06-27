@@ -2,8 +2,8 @@ import {Body, Controller,Delete, Get, HttpCode, HttpStatus,Param,ParseIntPipe,Po
 // precisa importar as classes
 
 @Controller('/funcionario')
-export class funcionarioController {
-  constructor(private readonly funcionarioService: funcionarioService) {}
+export class FuncionarioController {
+  constructor(private readonly funcionarioService: FuncionarioService) {}
 
   @Get()
   @HttpCode(HttpStatus.OK)
