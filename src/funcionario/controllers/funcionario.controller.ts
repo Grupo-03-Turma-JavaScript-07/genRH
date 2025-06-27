@@ -1,38 +1,51 @@
-import {Body, Controller,Delete, Get, HttpCode, HttpStatus,Param,ParseIntPipe,Post,Put,} from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { Funcionario } from '../entities/funcionario.entity';
+import { FuncionarioService } from '../services/funcionario.service';
 // precisa importar as classes
 
-@Controller('/funcionario')
+@Controller('/funcionarios')
 export class FuncionarioController {
   constructor(private readonly funcionarioService: FuncionarioService) {}
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  findAll(): Promise<funcionario[]> {
+  findAll(): Promise<Funcionario[]> {
     return this.funcionarioService.findAll();
   }
 
   @Get('/:id')
   @HttpCode(HttpStatus.OK)
-  findById(@Param('id', ParseIntPipe) id: number): Promise<funcionario> {
+  findById(@Param('id', ParseIntPipe) id: number): Promise<Funcionario> {
     return this.funcionarioService.findById(id);
   }
 
   @Get('/nome/:nome')
   @HttpCode(HttpStatus.OK)
-  findAllByNome (@Param('nome') nome: string): Promise<funcionario[]> {
+  findAllByNome(@Param('nome') nome: string): Promise<Funcionario[]> {
     return this.funcionarioService.findAllByNome(nome);
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() funcionario: funcionario): Promise<funcionario> {
+  create(@Body() funcionario: Funcionario): Promise<Funcionario> {
     return this.funcionarioService.create(funcionario);
   }
 
   @Put()
   @HttpCode(HttpStatus.OK)
-  Update(@Body() funcionario: funcionario): Promise<funcionario> {
-    return this.funcionarioService.Update(funcionario);
+  Update(@Body() funcionario: Funcionario): Promise<Funcionario> {
+    return this.funcionarioService.update(funcionario);
   }
 
   @Delete('/:id')

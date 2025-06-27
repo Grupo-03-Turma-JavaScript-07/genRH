@@ -15,8 +15,7 @@ export class Usuario {
   @Column({ length: 150, nullable: false })
   email: string;
 
-  @IsNotEmpty()
-  @Column({ length: 5000, nullable: false })
+  @Column({ length: 5000, nullable: true })
   foto: string;
 
   @IsNotEmpty()

@@ -13,7 +13,7 @@ export class Funcionario {
   nome: string;
 
   @IsNotEmpty()
-  @Column({ length: 11, nullable: false })
+  @Column('decimal', { precision: 10, scale: 2, nullable: false })
   salario: number;
 
   @IsNotEmpty()
@@ -21,7 +21,7 @@ export class Funcionario {
   cpf: string;
 
   @IsNotEmpty()
-  @Column({ length: 3, nullable: false })
+  @Column({ nullable: false })
   contrato: number;
 
   @ManyToOne(() => Departamento, (departamento) => departamento.funcionario, {
