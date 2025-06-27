@@ -71,26 +71,27 @@ export class UsuarioService {
 
   async create(usuario: Usuario): Promise<Usuario> {
     this.validarFoto(usuario.foto);
+    const email = usuario.email;
+    const validarEmail = await this.usuarioRepository.findOne({
+      where: { email },
+    });
 
-    if (this.findByEmail !== null)
-      throw new HttpException('Usuario já existe!', HttpStatus.BAD_REQUEST);
-    
+    if (validarEmail)
+      throw new HttpException('Usuario já existe!', HttpStatus.CONFLICT);
 
-    // const buscaEmail = await this.findByEmail(usuario.email);
-    // if (buscaEmail)
-    //   throw new HttpException('O Usuario ja existe!', HttpStatus.BAD_REQUEST);
     return await this.usuarioRepository.save(usuario);
   }
 
   async update(usuario: Usuario): Promise<Usuario> {
-    // this.validarFoto(usuario.foto);
+    this.validarFoto(usuario.foto);
     await this.findById(usuario.id);
-    // const buscaEmail = await this.findByEmail(usuario.email);
-    // if (buscaEmail && buscaEmail.id !== usuario.id)
-    //   throw new HttpException(
-    //     'Usuario (e-mail) ja cadastrado!',
-    //     HttpStatus.BAD_REQUEST,
-    //   );
+    const email = usuario.email;
+    const validarEmail = await this.usuarioRepository.findOne({
+      where: { email },
+    });
+
+    if (validarEmail)
+      throw new HttpException('Usuario já existe!', HttpStatus.CONFLICT);
     
     return await this.usuarioRepository.save(usuario);
   }

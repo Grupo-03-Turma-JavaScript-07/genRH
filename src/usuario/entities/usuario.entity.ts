@@ -13,7 +13,6 @@ export class Usuario {
 
   @IsNotEmpty()
   @Column({ length: 150, nullable: false })
-  @Index({unique: true}) 
   email: string;
 
   @Column({ length: 5000, nullable: true })
