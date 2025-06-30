@@ -62,20 +62,20 @@ export class FuncionarioService {
   async aumentoSalario(id: number): Promise<Funcionario> {
     const funcionario = await this.findById(id);
 
-    funcionario.salario = Number(funcionario.salario);
+    // funcionario.salario = Number(funcionario.salario);
 
     switch (funcionario.contrato) {
-      case 1:
+      case 1: // CLT
         funcionario.salario += funcionario.salario * 0.1;
         break;
-      case 2:
+      case 2: // PJ
         funcionario.salario += funcionario.salario * 0.2;
         break;
-      case 3:
+      case 3: // Estagiario
         funcionario.salario += funcionario.salario * 0;
         break;
-      case 4:
-        funcionario.salario += funcionario.salario * 0.1;
+      case 4: // Temporário
+        funcionario.salario += funcionario.salario * 0.4;
         break;
     }
 
