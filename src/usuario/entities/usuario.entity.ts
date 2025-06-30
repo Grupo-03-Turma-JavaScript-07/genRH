@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { Funcionario } from '../../funcionario/entities/funcionario.entity';
 
 @Entity({ name: 'tb_usuarios' })
