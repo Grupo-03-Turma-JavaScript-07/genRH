@@ -13,7 +13,16 @@ export class Funcionario {
   nome: string;
 
   @IsNotEmpty()
-  @Column('decimal', { precision: 10, scale: 2, nullable: false })
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+    nullable: false,
+    transformer: {
+      to: (value: number) => value,
+      from: (value: string) => parseFloat(value),
+    },
+  })
   salario: number;
 
   @IsNotEmpty()
