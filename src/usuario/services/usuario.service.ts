@@ -92,7 +92,7 @@ export class UsuarioService {
 
     if (validarEmail)
       throw new HttpException('Usuario já existe!', HttpStatus.CONFLICT);
-    
+
     return await this.usuarioRepository.save(usuario);
   }
 
